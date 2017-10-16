@@ -106,8 +106,12 @@ public class Controller implements Initializable{
         else return;
 
         update();
-        System.out.println("Updated");
-        System.out.println(board);
+
+        if (board.isGoal()) label.setText("Congratulations!");
+        else label.setText("");
+
+//        System.out.println("Updated");
+//        System.out.println(board);
     }
 
     @FXML
@@ -187,10 +191,9 @@ public class Controller implements Initializable{
                     ivPointer.setImage(null);
                     continue;
                 }
-                String fileAddress = "res/vectors/" + board.getBlocks()[i][j] + ".png";
+                String fileAddress = "res/output/" + board.getBlocks()[i][j] + ".jpg";
                 ivPointer.setImage(new Image(new FileInputStream(fileAddress)));
             }
         }
     }
 }
-
