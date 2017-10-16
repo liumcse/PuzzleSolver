@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="hBox" onKeyPressed="#moveBlock" prefHeight="278.0" prefWidth="478.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Controller">
+
+    <children>
+      <GridPane fx:id="gridPane" focusTraversable="true" hgap="2.0" styleClass="grid" vgap="2.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="90.0" prefWidth="90.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="90.0" prefWidth="90.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="90.0" prefWidth="90.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+         <children>
+            <ImageView fx:id="img_00" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="img_01" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+            <ImageView fx:id="img_02" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+            <ImageView fx:id="img_10" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+            <ImageView fx:id="img_11" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ImageView fx:id="img_12" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <ImageView fx:id="img_20" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+            <ImageView fx:id="img_21" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ImageView fx:id="img_22" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <VBox alignment="CENTER" prefHeight="300.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Button fx:id="shuffle" focusTraversable="false" mnemonicParsing="false" onAction="#shuffle" text="Shuffle" />
+            <Button focusTraversable="false" mnemonicParsing="false" text="Load Picture" />
+            <Button fx:id="solve" focusTraversable="false" mnemonicParsing="false" onAction="#solvePuzzle" text="Solve" />
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#next" text="Show Steps" />
+            <Label fx:id="label" text="Initialized." />
+         </children>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin></VBox>
+   </children>
+
+
+
+</HBox>
