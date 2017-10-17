@@ -10,12 +10,14 @@ public class ImageProcess {
     private BufferedImage[] imgPieces;
     private int width, height, outputSize;
 
-    public ImageProcess(BufferedImage img) throws IOException {
+    protected ImageProcess(BufferedImage img) throws IOException {
         this.img = img;
         imgPieces = new BufferedImage[8];
 
         width = img.getWidth();
         height = img.getHeight();
+        crop();
+        System.out.println("Success");
     }
 
     private void crop() throws IOException {
@@ -44,17 +46,18 @@ public class ImageProcess {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 BufferedImage piece = croppedImage.getSubimage(j * croppedSize, i * croppedSize, croppedSize, croppedSize);
-                ImageIO.write(piece, "jpg", new File("res/output/" + count + ".jpg"));
+                ImageIO.write(piece, "png", new File("res/output/" + count + ".png"));
                 count++;
             }
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        BufferedImage img = ImageIO.read(new File("res/pictures/hollywood.jpg"));
-        ImageProcess test = new ImageProcess(img);
-
-        System.out.println(img.getWidth() + ", " + img.getHeight());
-        test.crop();
-    }
+    // test
+//    public static void main(String[] args) throws IOException {
+//        BufferedImage img = ImageIO.read(new File("res/pictures/hollywood.jpg"));
+//        ImageProcess test = new ImageProcess(img);
+//
+//        System.out.println(img.getWidth() + ", " + img.getHeight());
+//        test.crop();
+//    }
 }

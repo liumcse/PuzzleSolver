@@ -10,12 +10,16 @@ import java.io.IOException;
 
 public class Main extends Application {
 
+//    private static Stage primaryStage;
+
     public static void main(String[] args) {
         launch(args);
     }
 
+
     @Override
     public void start(Stage primaryStage) throws IOException {
+//        this.primaryStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("Puzzle.fxml"));
 
         primaryStage.setTitle("PuzzleSolver");
@@ -23,4 +27,8 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
     }
+
+//    public static Stage getPrimaryStage() {
+//        return primaryStage;
+//    }
 }

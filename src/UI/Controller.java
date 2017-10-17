@@ -4,16 +4,24 @@ import Puzzle.Board;
 import Puzzle.Solver;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
 
+import javax.imageio.ImageIO;
+import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
@@ -23,6 +31,7 @@ public class Controller implements Initializable{
     private Board board;
     private Solver solver;
     private ArrayList<Board> solution;
+    private int init;
 
     @FXML
     private HBox hBox;
@@ -65,12 +74,14 @@ public class Controller implements Initializable{
                 {7, 8, 0}
         };
         board = new Board(boardIni);
+        init = 1;
 
         try {
             update();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     @FXML
@@ -165,6 +176,31 @@ public class Controller implements Initializable{
         update();
     }
 
+    @FXML
+    void loadPicture() {
+        try {
+            label.setText("Loading picture...");
+
+            FileChooser fileChooser = new FileChooser();
+//            label.getScene().getWindow();
+            File file = fileChooser.showOpenDialog(label.getScene().getWindow());
+
+            BufferedImage img = ImageIO.read(file);
+
+            // process image
+            ImageProcess imgProcess = new ImageProcess(img);
+            init = 0;
+
+            // update board
+            update();
+            label.setText("Picture loaded.");
+        }
+        catch (IOException e) {
+            // need not do anything
+
+        }
+    }
+
     private void update() throws IOException {
         // Credits: <div>Icons made by <a href="https://www.flaticon.com/authors/twitter" title="Twitter">Twitter</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
         ImageView ivPointer;
@@ -191,7 +227,14 @@ public class Controller implements Initializable{
                     ivPointer.setImage(null);
                     continue;
                 }
-                String fileAddress = "res/output/" + board.getBlocks()[i][j] + ".jpg";
+
+                String fileAddress;
+
+                if (init == 1) {
+                    fileAddress = "res/vectors/" + board.getBlocks()[i][j] + ".png";
+                } else {
+                    fileAddress = "res/output/" + board.getBlocks()[i][j] + ".png";
+                }
                 ivPointer.setImage(new Image(new FileInputStream(fileAddress)));
             }
         }
