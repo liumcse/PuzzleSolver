@@ -7,12 +7,10 @@ import java.io.IOException;
 
 public class ImageProcess {
     private BufferedImage img, croppedImage;
-    private BufferedImage[] imgPieces;
     private int width, height, outputSize;
 
     protected ImageProcess(BufferedImage img) throws IOException {
         this.img = img;
-        imgPieces = new BufferedImage[8];
 
         width = img.getWidth();
         height = img.getHeight();
