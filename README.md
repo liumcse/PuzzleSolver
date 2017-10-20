@@ -4,7 +4,7 @@ PuzzleSolver is a mini-game implemented by JavaFX. It contains the following fea
 
 - Load a picture as the puzzle background
 - Shuffle puzzle blocks
-- Solve puzzle *(using A\* algorithm)*
+- Solve puzzle *(using A\* search algorithm)*
 
 ![Alt text](https://github.com/lyming90/PuzzleSolver/blob/master/demo/Demo_1.png)
 ![Alt text](https://github.com/lyming90/PuzzleSolver/blob/master/demo/Demo_2.png)
